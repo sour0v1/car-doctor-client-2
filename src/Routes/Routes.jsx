@@ -6,6 +6,7 @@ import SignUp from "../pages/SignUp/SignUp";
 import BookService from "../pages/BookService/BookService";
 import Bookings from "../pages/Bookings/Bookings";
 import PrivateRoute from "./PrivateRoute";
+import About from "../pages/Home/About/About";
 
 const router = createBrowserRouter([
     {
@@ -27,11 +28,15 @@ const router = createBrowserRouter([
         {
           path: 'book/:id', 
           element: <BookService></BookService>, 
-          loader: ({params}) => fetch(`http://localhost:5000/services/${params.id}`)
+          loader: ({params}) => fetch(`https://car-doctor-server-eight-neon.vercel.app/services/${params.id}`)
         },
         {
           path: 'bookings', 
           element: <PrivateRoute><Bookings></Bookings></PrivateRoute>
+        },
+        {
+          path : '/about',
+          element : <About></About>
         }
       ]
     },
